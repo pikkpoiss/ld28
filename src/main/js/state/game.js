@@ -46,6 +46,7 @@ define(function (require) {
         this.score -= mission.importance;
       }
       this.checkWin();
+      this.trigger('changeState', this);
     };
 
     this.populateAgents = function populateAgents() {
@@ -65,11 +66,13 @@ define(function (require) {
       if (this.time >= this._nextmission) {
         this.addMission();
       }
+      this.trigger('changeState', this);
     };
 
     this.after('initialize', function() {
       this.populateAgents();
       this.selectMole();
+      this.trigger('changeState', this);
     });
   }
 

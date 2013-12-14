@@ -8,6 +8,7 @@ require.config({
   },
 });
 
-require(['state/game'], function(Game) {
+require(['state/game', 'ui/game_ui'], function(Game, GameUI) {
+  GameUI.attachTo(document);
   Game.attachTo(document);
 });
