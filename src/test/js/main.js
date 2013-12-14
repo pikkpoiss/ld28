@@ -7,8 +7,6 @@ for (var file in window.__karma__.files) {
   }
 }
 
-console.log(tests);
-
 require.config({
   baseUrl: '/base/src/main/js',
   paths: {

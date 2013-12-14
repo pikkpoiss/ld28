@@ -16,10 +16,10 @@ module.exports = function(config) {
     files: [
       'bower_components/jquery/jquery.js',
       'bower_components/jasmine-flight/lib/jasmine-flight.js',
-      {pattern: 'src/test/js/**/*.js',      included: false},
       {pattern: 'src/main/js/**/*.js',      included: false},
       {pattern: 'bower_components/**/*.js', included: false},
-      'src/test/js/main.js'
+      'src/test/js/main.js',
+      {pattern: 'src/test/js/**/*.js',      included: false},
     ],
 
 
