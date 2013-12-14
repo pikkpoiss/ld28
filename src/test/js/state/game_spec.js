@@ -1,11 +1,11 @@
 describeComponent('state/game', function () {
-  beforeEach(function () {
+  beforeEach(function() {
     setupComponent({
       numAgents: 5
     });
   });
 
-  it('should have the correct number of agents', function () {
+  it('should have the correct number of agents', function() {
     expect(this.component.agents.length).toBe(5);
   });
 
@@ -22,10 +22,10 @@ describeComponent('state/game', function () {
 
     describe('when the tick is past the next mission threshold', function() {
       it('should send the correct event', function() {
-        var eventSpy = spyOnEvent(document, 'newMission');
+        var eventSpy = spyOnEvent(this.component.node, 'newMission');
         this.component._nextmission = 1;
         this.component.tick()
-        expect(eventSpy).toHaveBeenTriggeredOn(document);
+        expect(eventSpy).toHaveBeenTriggeredOn(this.component.node);
       });
 
       it('should change _nextmission', function() {

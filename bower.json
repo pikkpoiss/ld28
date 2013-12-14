@@ -20,6 +20,7 @@
     "requirejs": "~2.1.9"
   },
   "devDependencies": {
-    "jasmine-flight": "~2.1.0"
+    "jasmine-flight": "~2.1.0",
+    "jasmine-jquery": "~1.5.93"
   }
 }
