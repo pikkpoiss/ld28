@@ -13,7 +13,8 @@ require.config({
     jquery:  '../../../bower_components/jquery/jquery',
     es5shim: '../../../bower_components/es5-shim/es5-shim',
     es5sham: '../../../bower_components/es5-shim/es5-sham',
-    flight:  '../../../bower_components/flight'
+    flight:  '../../../bower_components/flight',
+    'state/random': '../../test/js/mocks/random'
   },
   deps: tests,
   callback: window.__karma__.start
