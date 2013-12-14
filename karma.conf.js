@@ -14,6 +14,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'bower_components/jquery/jquery.js',
+      'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
+      'bower_components/jasmine-flight/lib/jasmine-flight.js',
       {pattern: 'src/main/js/**/*.js',      included: false},
       {pattern: 'bower_components/**/*.js', included: false},
       'src/test/js/main.js',

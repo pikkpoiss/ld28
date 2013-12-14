@@ -1,4 +1,4 @@
-describeComponent('state/game', function () {
+describeComponent('state/game', function() {
   beforeEach(function() {
     setupComponent({
       numAgents: 5
