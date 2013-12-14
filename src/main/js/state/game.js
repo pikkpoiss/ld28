@@ -29,6 +29,25 @@ define(function (require) {
       this._nextmission += step;
     };
 
+    this.checkWin = function checkWin() {
+      if (this.score <= 0.0) {
+        this.trigger('end', false);
+      } else if (this.score >= 1.0) {
+        this.trigger('end', true);
+      }
+    };
+
+    this.onMissionFinished = function onMissionFinished(success, mission) {
+      var index = this.missions.indexOf(mission);
+      this.missions.splice(index, 1);
+      if (success) {
+        this.score += mission.importance;
+      } else {
+        this.score -= mission.importance;
+      }
+      this.checkWin();
+    };
+
     this.populateAgents = function populateAgents() {
       for (var i = 0; i < this.attr.numAgents; i++) {
         this.agents.push(new Agent({
@@ -49,7 +68,6 @@ define(function (require) {
     };
 
     this.after('initialize', function() {
-      console.log('I live!');
       this.populateAgents();
       this.selectMole();
     });

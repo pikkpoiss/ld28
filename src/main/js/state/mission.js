@@ -14,6 +14,7 @@ define(function (require) {
       max_agents:         5,
       duration_planning:  5,
       duration_executing: 10,
+      importance:         0.1,
       name:               'Simple mission',
       description:        'A simple task'
     }, attr);
