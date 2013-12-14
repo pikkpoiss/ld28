@@ -17,3 +17,9 @@ Testing
 -------
 
     karma start
+
+Running
+-------
+
+    open src/main/html/index.html
+
