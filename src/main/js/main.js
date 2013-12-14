@@ -1,5 +1,5 @@
 require.config({
-  baseUrl: 'src/main/js',
+  baseUrl: '../js',
   paths: {
     jquery:  '../../../bower_components/jquery/jquery',
     es5shim: '../../../bower_components/es5-shim/es5-shim',
@@ -9,5 +9,5 @@ require.config({
 });
 
 require(['state/game'], function(Game) {
-  Game.initialize();
+  Game.attachTo(document);
 });
