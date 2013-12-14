@@ -1,5 +1,4 @@
 define(function (require) {
-  var defineComponent = require('flight/lib/component');
   var $ = require('jquery');
 
   function Agent(attr){
