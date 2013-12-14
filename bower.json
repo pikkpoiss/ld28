@@ -1,0 +1,25 @@
+{
+  "name": "ld28",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kurrik/ld28",
+  "authors": [
+    "Arne Roomann-Kurrik <kurrik@gmail.com>"
+  ],
+  "description": "Ludum Dare 28",
+  "license": "Apache v2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flight": "~1.1.1",
+    "requirejs": "~2.1.9"
+  },
+  "devDependencies": {
+    "jasmine-flight": "~2.1.0"
+  }
+}
