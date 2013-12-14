@@ -3,6 +3,7 @@ define(function (require) {
 
   function Agent(attr){
     this.attr = $.extend({
+      sex: 'Male',
       skill_hacking:    0,
       skill_managing:   0,
       skill_driving:    0,
