@@ -2,8 +2,9 @@ define(function (require) {
   var $ = require('jquery');
 
   function Mission(attr){
+    this.agents = [];
+
     this.attr = $.extend({
-      agents:          [],
       skill_hacking:   0,
       skill_managing:  0,
       skill_driving:   0,
@@ -15,7 +16,7 @@ define(function (require) {
     }, attr);
 
     this.addAgent = function addAgent(agent) {
-      if (this.agents.length < max_agents) {
+      if (this.agents.length < this.attr.max_agents) {
         this.agents.push(agent);
       }
     };
@@ -28,7 +29,7 @@ define(function (require) {
         skill_seduction: 0,
         skill_fighting:  0
       }
-      for (var i, agent; agent = agents[i]; i++) {
+      for (var i=0, agent; agent = this.agents[i]; i++) {
         for (var key in scores) {
           if (agent.attr.hasOwnProperty(key)) {
             scores[key] += agent.attr[key];
