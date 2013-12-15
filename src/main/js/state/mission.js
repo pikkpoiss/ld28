@@ -54,21 +54,24 @@ define(function (require) {
 
     this.tick = function tick() {
       this.time += 1;
+      console.log('Mission', this.state, this.time);
       switch (this.state) {
       case 'planning':
-        if (this.time >= this.duration_planning) {
+        if (this.time >= this.attr.duration_planning) {
           this.state = 'executing';
           this.time = 0;
           if (this.agents.length == 0) {
             // Failed because no agents were assigned in time.
             this.success = false;
             this.finished = true;
-            onFinished(this.success, this);
+            if (onFinished) {
+              onFinished(this.success, this);
+            }
           }
         }
         break;
       case 'executing':
-        if (this.time >= this.duration_executing) {
+        if (this.time >= this.attr.duration_executing) {
           this.finished = true;
           this.success = Random.chooseSuccess(this.probability());
           onFinished(this.success, this);

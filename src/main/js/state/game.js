@@ -22,7 +22,7 @@ define(function (require) {
     this.addMission = function addMission() {
       var mission = new Mission({
         name: 'New mission!'
-      });
+      }, this.onMissionFinished.bind(this));
       this.missions.push(mission);
       this.trigger('newMission', mission);
       var step = Random.gaussian(this.attr.missionMean, this.attr.missionStddev);
@@ -38,12 +38,13 @@ define(function (require) {
     };
 
     this.onMissionFinished = function onMissionFinished(success, mission) {
+      console.log('Mission finished', success, mission);
       var index = this.missions.indexOf(mission);
       this.missions.splice(index, 1);
       if (success) {
-        this.score += mission.importance;
+        this.score += mission.attr.importance;
       } else {
-        this.score -= mission.importance;
+        this.score -= mission.attr.importance;
       }
       this.checkWin();
       this.trigger('changeState', this);
@@ -65,6 +66,9 @@ define(function (require) {
       this.time += 1;
       if (this.time >= this._nextmission) {
         this.addMission();
+      }
+      for (var i=0, mission; mission = this.missions[i]; i++) {
+        mission.tick();
       }
       this.trigger('changeState', this);
     };

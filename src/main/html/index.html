@@ -5,13 +5,28 @@
         <script data-main="../js/main" src="../../../bower_components/requirejs/require.js"></script>
         <script src="../../../bower_components/angular/angular.js"></script>
         <script src="../js/ui/game_ng.js"></script>
+        <link rel="stylesheet" href="../css/styles.css" />
     </head>
     <body>
         <h1>Ludum Dare 28</h1>
         <div id="game" ng-app="ld28" ng-controller="GameUICtrl">
-          {{game.agents}}
-          {{game.score}}
-          {{game.missions}}
+          <div id="controls">
+            <button id="btn-tick" ng-click="game.tick()">Tick</button>
+            <button id="btn-finger">Finger</button>
+          </div>
+          <div id="score">
+            Score: {{game.score}}
+          </div>
+          <div id="agents">
+            <div ng-repeat="agent in game.agents" class="agent">
+              <div class="name">{{agent.attr.name}}</div>
+            </div>
+          </div>
+          <div id="agents">
+            <div ng-repeat="mission in game.missions" class="mission">
+              <div class="name">{{mission.attr.name}}</div>
+            </div>
+          </div>
         </div>
     </body>
 </html>

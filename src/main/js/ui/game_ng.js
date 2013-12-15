@@ -4,7 +4,9 @@ ld28.controller('GameUICtrl', ['$scope', function($scope) {
   function GameStateAPI() {
     this.setGame = function(game) {
       $scope.game = game;
-      $scope.$digest();
+      if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+        $scope.$digest();
+      }
     };
   };
   window.ngGameStateAPI = new GameStateAPI();

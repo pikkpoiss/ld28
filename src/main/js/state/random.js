@@ -16,7 +16,7 @@ define(function (require) {
     };
 
     this.gaussian = function gaussian(mean, stddev, min) {
-      var value = Math.round(this._standard_normal() * stdev + mean);
+      var value = Math.round(this._standard_normal() * stddev + mean);
       if (!isNaN(min)) {
         value = Math.max(min, value);
       }
