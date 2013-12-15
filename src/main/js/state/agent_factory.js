@@ -4,9 +4,13 @@ define(function(require) {
 
   function AgentFactory() {
     this.SexDistribution = 0.5;
+    this.FirstNames = ['Roman', 'Arne', 'Matt', 'Krieger', 'Wes', 'Yash',
+      'James'];
+    this.LastNames = ['Bond', 'Kent', 'Dutchess', 'Krieger', 'Nurik',
+      'Rooman-Kurrik', 'Goodman'];
 
     this.makeAgent = function makeAgent() {
-      attr = {
+      var attr = {
         sex: 'Male',
         skill_hacking: 0,
         skill_managing: 0,
@@ -18,9 +22,15 @@ define(function(require) {
       if (Math.random() < this.SexDistribution) {
         attr.sex = 'Female'
       }
+
+      var firstName = this.FirstNames[
+          Random.chooseIndex(this.FirstNames.length)];
+      var lastName = this.LastNames[
+          Random.chooseIndex(this.LastNames.length)];
+      attr.name = firstName + ' ' + lastName;
       return new Agent(attr);
     };
-  }
+  };
   return AgentFactory;
 
 });
