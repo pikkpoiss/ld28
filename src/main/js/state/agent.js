@@ -11,8 +11,6 @@ define(function (require) {
       skill_fighting:   0,
       name:             'James Bond'
     }, attr);
-
-    console.log('My name is ' + this.attr.name);
   }
 
   return Agent;
