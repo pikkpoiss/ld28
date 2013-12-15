@@ -8,6 +8,8 @@ define(function (require) {
     };
 
     this.chooseIndex = function chooseIndex(count) {
+      console.log('Got count: ' + count);
+      debugger;
       return Math.floor(Math.random() * count);
     };
 
