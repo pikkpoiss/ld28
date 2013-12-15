@@ -10,6 +10,7 @@ define(function(require) {
       'James'];
     this.LastNames = ['Bond', 'Kent', 'Dutchess', 'Krieger', 'Nurik',
       'Rooman-Kurrik', 'Goodman'];
+    this.chosenNames = {};
 
     this.makeAgent = function makeAgent() {
       var attr = {
@@ -25,13 +26,29 @@ define(function(require) {
         attr.sex = 'Female'
       }
 
-      var firstName = this.FirstNames[
-          Random.chooseIndex(this.FirstNames.length)];
-      var lastName = this.LastNames[
-          Random.chooseIndex(this.LastNames.length)];
-      attr.name = firstName + ' ' + lastName;
+      attr.name = this.chooseName();
 
-      // Stats distribution.
+      this.distributeStatPoints(attr);
+
+      return new Agent(attr);
+    };
+
+    this.chooseName = function chooseName() {
+      var gotName = false;
+      if (!gotName) {
+        var nameIndexes = [Random.chooseIndex(this.FirstNames.length),
+            Random.chooseIndex(this.LastNames.length)];
+        var nameIndexesString = nameIndexes.join('');
+        if (!this.chosenNames[nameIndexesString]) {
+          var firstName = this.FirstNames[nameIndexes[0]];
+          var lastName = this.LastNames[nameIndexes[1]];
+          this.chosenNames[nameIndexesString] = true;
+          return firstName + ' ' + lastName;
+        }
+      }
+    };
+
+    this.distributeStatPoints = function distributeStatPoints(attr) {
       var statCount = this.TotalStatPoints;
       while (statCount > 0) {
         var incremented = false;
@@ -44,9 +61,8 @@ define(function(require) {
           }
         }
       }
-
-      return new Agent(attr);
     };
+
   }
 
   return AgentFactory;
