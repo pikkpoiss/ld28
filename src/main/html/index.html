@@ -3,8 +3,15 @@
     <head>
         <title>LD28</title>
         <script data-main="../js/main" src="../../../bower_components/requirejs/require.js"></script>
+        <script src="../../../bower_components/angular/angular.js"></script>
+        <script src="../js/ui/game_ng.js"></script>
     </head>
     <body>
         <h1>Ludum Dare 28</h1>
+        <div id="game" ng-app="ld28" ng-controller="GameUICtrl">
+          {{game.agents}}
+          {{game.score}}
+          {{game.missions}}
+        </div>
     </body>
 </html>
