@@ -47,7 +47,8 @@ define(function(require) {
 
       return new Agent(attr);
     };
-  };
+  }
+
   return AgentFactory;
 
 });

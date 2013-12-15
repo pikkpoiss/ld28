@@ -11,9 +11,7 @@ define(function (require) {
       skill_fighting:   0,
       name:             'James Bond'
     }, attr);
-
-    console.log('My name is ' + this.attr.name);
-  };
+  }
 
   Agent.prototype.skills = ['skill_hacking', 'skill_managing', 'skill_driving',
       'skill_seduction', 'skill_fighting'];
