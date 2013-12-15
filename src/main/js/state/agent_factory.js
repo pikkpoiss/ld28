@@ -4,6 +4,8 @@ define(function(require) {
 
   function AgentFactory() {
     this.SexDistribution = 0.5;
+    this.TotalStatPoints = 16;
+    this.MaxStatValue = 5;
     this.FirstNames = ['Roman', 'Arne', 'Matt', 'Krieger', 'Wes', 'Yash',
       'James'];
     this.LastNames = ['Bond', 'Kent', 'Dutchess', 'Krieger', 'Nurik',
@@ -28,6 +30,21 @@ define(function(require) {
       var lastName = this.LastNames[
           Random.chooseIndex(this.LastNames.length)];
       attr.name = firstName + ' ' + lastName;
+
+      // Stats distribution.
+      var statCount = this.TotalStatPoints;
+      while (statCount > 0) {
+        var incremented = false;
+        while (!incremented) {
+          var statIndex = Random.chooseIndex(Agent.prototype.skills.length);
+          if (attr[Agent.prototype.skills[statIndex]] < this.MaxStatValue) {
+            attr[Agent.prototype.skills[statIndex]]++;
+            statCount--;
+            incremented = true;
+          }
+        }
+      }
+
       return new Agent(attr);
     };
   };
