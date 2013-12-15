@@ -25,11 +25,7 @@ define(function(require) {
         attr.sex = 'Female'
       }
 
-      var firstName = this.FirstNames[
-          Random.chooseIndex(this.FirstNames.length)];
-      var lastName = this.LastNames[
-          Random.chooseIndex(this.LastNames.length)];
-      attr.name = firstName + ' ' + lastName;
+      attr.name = this.chooseName();
 
       // Stats distribution.
       var statCount = this.TotalStatPoints;
@@ -46,6 +42,14 @@ define(function(require) {
       }
 
       return new Agent(attr);
+    };
+
+    this.chooseName = function chooseName() {
+      var firstName = this.FirstNames[
+          Random.chooseIndex(this.FirstNames.length)];
+      var lastName = this.LastNames[
+          Random.chooseIndex(this.LastNames.length)];
+      return firstName + ' ' + lastName;
     };
   }
 
