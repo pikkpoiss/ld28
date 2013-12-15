@@ -3,6 +3,7 @@ define(function (require) {
   var Agent = require('state/agent');
   var Random = require('state/random');
   var Mission = require('state/mission');
+  var AgentFactory = require('state/agent_factory');
 
   function Game() {
     this.defaultAttrs({
@@ -18,6 +19,7 @@ define(function (require) {
     this.mole         = null;
 
     this._nextmission = 1;
+    this._agent_factory = new AgentFactory();
 
     this.addMission = function addMission() {
       var mission = new Mission({
@@ -52,9 +54,7 @@ define(function (require) {
 
     this.populateAgents = function populateAgents() {
       for (var i = 0; i < this.attr.numAgents; i++) {
-        this.agents.push(new Agent({
-          name: 'Agent ' + i
-        }));
+        this.agents.push(this._agent_factory.makeAgent());
       };
     };
 
