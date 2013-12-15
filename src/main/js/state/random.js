@@ -13,6 +13,10 @@ define(function (require) {
       return Math.floor(Math.random() * count);
     };
 
+    this.chooseSuccess = function chooseSuccess(prob) {
+      return Math.random() < prob;
+    };
+
     this.gaussian = function gaussian(mean, stddev, min) {
       var value = Math.round(this._standard_normal() * stdev + mean);
       if (!isNaN(min)) {
